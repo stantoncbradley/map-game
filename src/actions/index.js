@@ -20,7 +20,6 @@ export const playAgain = () => {
 }
 
 export const selectImage = (number) => {
-  debugger;
   return {
     type: 'IMAGE_SELECTED',
     number: number
