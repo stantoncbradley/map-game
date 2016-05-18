@@ -21738,9 +21738,9 @@
 	            'Welcome to Map Game!'
 	          ),
 	          'Current location is lat ',
-	          this.props.lat,
+	          Math.floor(this.props.lat),
 	          ', long ',
-	          this.props.long,
+	          Math.floor(this.props.long),
 	          instructions
 	        ),
 	        _react2.default.createElement(
