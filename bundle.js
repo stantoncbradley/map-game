@@ -21585,19 +21585,9 @@
 	
 	var dispatchProps = function dispatchProps(dispatch) {
 	  return {
-	    setCoords: function (_setCoords) {
-	      function setCoords() {
-	        return _setCoords.apply(this, arguments);
-	      }
-	
-	      setCoords.toString = function () {
-	        return _setCoords.toString();
-	      };
-	
-	      return setCoords;
-	    }(function () {
-	      dispatch(setCoords(lat, long));
-	    }),
+	    setCoords: function setCoords() {
+	      dispatch((0, _actions.setCoords)(lat, long));
+	    },
 	    playAgain: function playAgain() {
 	      dispatch((0, _actions.playAgain)());
 	    },
