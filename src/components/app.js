@@ -4,12 +4,13 @@ import MapPicture from '../components/ClickImage'
 class App extends React.Component {
   constructor() {
     super();
+    this.props.dispatch(playAgain())
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function(position) {
-        this.props.dispatch(setCoords(position.coords.latitude, position.coords.longitude));
+        this.props.setCoords(position.coords.latitude, position.coords.longitude);
       });
     } else {
-      this.props.dispatch(noCoordsProvided())
+      this.props.setCoords(0,0)
     }
   }
 

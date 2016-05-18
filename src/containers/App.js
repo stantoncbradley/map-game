@@ -6,12 +6,15 @@ import AppComponent from '../components/App'
 const mapStateToProps = (state) => {
   return {
     urls: state.coords.map(coord => (coord.url)),
-    outcome: state.outcome
+    outcome: state.outcome,
   }
 }
 
 const dispatchProps = (dispatch) => {
   return {
+    setCoords: () => {
+      dispatch(setCoords(lat, long))
+    }
     playAgain: () => {
       dispatch(playAgain())
     },

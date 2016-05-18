@@ -8,11 +8,6 @@ export const setCoords = (lat, long) => {
   }
 }
 
-export const noCoordsProvided = () => {
-  return {
-    type: 'NO_COORDS'
-  }
-}
 export const playAgain = () => {
   return {
     type: 'PLAY_AGAIN'

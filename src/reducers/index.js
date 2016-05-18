@@ -1,9 +1,10 @@
 'use strict';
 
-const numPics = 5;
-const maxLat = 90;
-const maxLong = 180;
-const googleMapsKey = 'AIzaSyDpPWpOoL02EV4l2GoFlhTxGGn2oBdenlw';
+const NUM_PICS = 5;
+const MAX_LAT = 90;
+const MAX_LONG = 180;
+const ZOOM = 13;
+const GOOGLE_MAPS_KEY = 'AIzaSyDpPWpOoL02EV4l2GoFlhTxGGn2oBdenlw';
 
 const defaultState = {
   coords: [],
@@ -22,15 +23,15 @@ const getDistance = (x1, y1, x2, y2) => {
 }
 
 const getUrl = (lat, long) => {
-  return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${long}&zoom=14&size=200x200&maptype=satellite&key=${googleMapsKey}`
+  return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${long}&zoom=${ZOOM}&size=200x200&maptype=satellite&key=${GOOGLE_MAPS_KEY}`
 }
 
 const generateCoords = (amount, currentLat, currentLong) => {
   const coordAry = [];
   let closest = Infinity;
   for (let i = 0; i < amount; i++) {
-    const lat = absRandom(maxLat);
-    const long = absRandom(maxLong);
+    const lat = absRandom(MAX_LAT);
+    const long = absRandom(MAX_LONG);
     coordAry.push({
       lat: lat,
       long: long,
@@ -60,10 +61,8 @@ const reducer = (state = defaultState, action) => {
   switch(action.type) {
     case 'SET_COORDS':
       return Object.assign({}, state, {lat: action.lat, long: action.long})
-    case 'NO_COORDS':
-      return Object.assign({}, state, {lat: 30, long: 100}) //TODO handle
     case 'PLAY_AGAIN':
-      const coords = generateCoords(numPics, state.lat, state.long);
+      const coords = generateCoords(NUM_PICS, state.lat, state.long);
       return Object.assign({}, state, {
         outcome: '',
         coords: coords,
