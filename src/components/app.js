@@ -11,13 +11,11 @@ class App extends React.Component {
     }
     let error = function(error) {
       console.warn('Error getting current position. Error code ' + error.code);
-      self.props.setCoords(0,0)
     }
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
       console.log('NO geolocator in navigator!')
-      this.props.setCoords(0,0)
     }
   }
 
