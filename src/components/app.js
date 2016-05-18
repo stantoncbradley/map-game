@@ -4,13 +4,14 @@ import MapPicture from '../components/ClickImage'
 class App extends React.Component {
   componentDidMount() {
     this.props.playAgain()
+    let self = this;
     let success = function(position) {
       console.log('geolocator in navigator!')
-      this.props.setCoords(position.coords.latitude, position.coords.longitude);
+      self.props.setCoords(position.coords.latitude, position.coords.longitude);
     }
     let error = function(error) {
       console.warn('Error getting current position. Error code ' + error.code);
-      this.props.setCoords(0,0)
+      self.props.setCoords(0,0)
     }
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(success, error);
