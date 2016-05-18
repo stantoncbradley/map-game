@@ -4,13 +4,18 @@ import MapPicture from '../components/ClickImage'
 class App extends React.Component {
   componentDidMount() {
     this.props.playAgain()
+    let success = function(position) {
+      console.log('geolocator in navigator!')
+      this.props.setCoords(position.coords.latitude, position.coords.longitude);
+    }
+    let error = function(error) {
+      console.warn('Error getting current position. Error code ' + error.code);
+      this.props.setCoords(0,0)
+    }
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        debugger;
-        this.props.setCoords(position.coords.latitude, position.coords.longitude);
-      });
+      navigator.geolocation.getCurrentPosition(success, error);
     } else {
-      debugger;
+      console.log('NO geolocator in navigator!')
       this.props.setCoords(0,0)
     }
   }
@@ -18,7 +23,7 @@ class App extends React.Component {
   render() {
     let instructions;
     if (this.props.active) {
-      instructions = <h6>Pick the image you think is closest to your area!</h6>
+      instructions = <div>Pick the image you think is closest to your area!</div>
     } else {
       instructions = (
       <div>
