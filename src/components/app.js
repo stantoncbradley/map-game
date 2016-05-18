@@ -36,7 +36,7 @@ class App extends React.Component {
       <div>
         <div className="app-header">
           <h1>Welcome to Map Game!</h1>
-          Current location is lat {this.props.lat}, long {this.props.long}
+          Current location is lat {Math.floor(this.props.lat)}, long {Math.floor(this.props.long)}
           {instructions}
         </div>
         <div>
