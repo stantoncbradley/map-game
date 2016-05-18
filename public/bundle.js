@@ -21694,12 +21694,14 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.props.playAgain();
+	      var self = this;
 	      var success = function success(position) {
 	        console.log('geolocator in navigator!');
-	        this.props.setCoords(position.coords.latitude, position.coords.longitude);
+	        self.props.setCoords(position.coords.latitude, position.coords.longitude);
 	      };
 	      var error = function error(_error) {
 	        console.warn('Error getting current position. Error code ' + _error.code);
+	        self.props.setCoords(0, 0);
 	      };
 	      if ("geolocation" in navigator) {
 	        navigator.geolocation.getCurrentPosition(success, error);
