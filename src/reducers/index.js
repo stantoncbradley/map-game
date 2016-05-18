@@ -1,7 +1,7 @@
 'use strict';
 
 const NUM_PICS = 5;
-const MAX_LAT = 90;
+const MAX_LAT = 70;
 const MAX_LONG = 180;
 const ZOOM = 13;
 const GOOGLE_MAPS_KEY = 'AIzaSyDpPWpOoL02EV4l2GoFlhTxGGn2oBdenlw';
@@ -36,7 +36,8 @@ const generateCoords = (amount, currentLat, currentLong) => {
       lat: lat,
       long: long,
       distance: getDistance(lat, long, currentLat, currentLong),
-      url: getUrl(lat, long)
+      url: getUrl(lat, long),
+      active: true
     })
   }
   return coordAry;
@@ -65,12 +66,13 @@ const reducer = (state = defaultState, action) => {
       const coords = generateCoords(NUM_PICS, state.lat, state.long);
       return Object.assign({}, state, {
         outcome: '',
+        active: true,
         coords: coords,
         winningIndex: getIndexOfClosest(coords)
       });
     case 'IMAGE_SELECTED':
-      debugger;
       return Object.assign({}, state, {
+        active: false,
         outcome: (action.number === state.winningIndex ? 'Winner' : 'Sorry, was picture #' + (state.winningIndex + 1))
       })
     default:

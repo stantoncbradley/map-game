@@ -1,3 +1,41 @@
-h1 {
-  color: blue;
+html {
+  background-color: #f0f0f0;
+  font: 16px Arial;
+}
+
+body {
+  margin: 0;
+}
+
+.app-header {
+  background-color: #444488;
+  color: #F0F0F0;
+  font-family: 'Lucida';
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+  padding: 20px 20px 20px 14px;
+  vertical-align: middle;
+}
+
+.Button {
+  background-color: #6666AA;
+  border-radius: 28px;
+  border: 0;
+  box-shadow: 0px 1px 1px #d9d9d9;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 15px;
+  text-decoration: none;
+  transition-duration: 0.1s;
+  transition-property: transform;
+}
+
+.Button:hover {
+  transform: scale(1.1);
 }

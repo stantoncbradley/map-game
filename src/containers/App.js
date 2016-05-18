@@ -7,6 +7,9 @@ const mapStateToProps = (state) => {
   return {
     urls: state.coords.map(coord => (coord.url)),
     outcome: state.outcome,
+    active: state.active,
+    lat: state.lat,
+    long: state.long
   }
 }
 
@@ -14,19 +17,34 @@ const dispatchProps = (dispatch) => {
   return {
     setCoords: () => {
       dispatch(setCoords(lat, long))
-    }
+    },
     playAgain: () => {
       dispatch(playAgain())
     },
-    imageClicked: (index) => {
+    selectImage: (index) => {
       dispatch(selectImage(index))
+    }
+  }
+}
+
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  const { selectImage } = dispatchProps;
+  return {
+    ...stateProps,
+    ...dispatchProps,
+    ...ownProps,
+    imageClicked: (index) => {
+      if (stateProps.active) {
+        selectImage(index)
+      }
     }
   }
 }
 
 const App = connect(
   mapStateToProps,
-  dispatchProps
+  dispatchProps,
+  mergeProps
 )(AppComponent)
 
 export default App
