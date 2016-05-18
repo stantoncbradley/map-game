@@ -21585,7 +21585,7 @@
 	
 	var dispatchProps = function dispatchProps(dispatch) {
 	  return {
-	    setCoords: function setCoords() {
+	    setCoords: function setCoords(lat, long) {
 	      dispatch((0, _actions.setCoords)(lat, long));
 	    },
 	    playAgain: function playAgain() {
@@ -21691,13 +21691,11 @@
 	      };
 	      var error = function error(_error) {
 	        console.warn('Error getting current position. Error code ' + _error.code);
-	        self.props.setCoords(0, 0);
 	      };
 	      if ("geolocation" in navigator) {
 	        navigator.geolocation.getCurrentPosition(success, error);
 	      } else {
 	        console.log('NO geolocator in navigator!');
-	        this.props.setCoords(0, 0);
 	      }
 	    }
 	  }, {
