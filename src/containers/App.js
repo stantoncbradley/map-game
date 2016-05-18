@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { playAgain, selectImage } from '../actions'
+import { playAgain, selectImage, setCoords } from '../actions'
 import AppComponent from '../components/App'
 
 const mapStateToProps = (state) => {
