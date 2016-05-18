@@ -21694,13 +21694,17 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.props.playAgain();
+	      var success = function success(position) {
+	        console.log('geolocator in navigator!');
+	        this.props.setCoords(position.coords.latitude, position.coords.longitude);
+	      };
+	      var error = function error(_error) {
+	        console.warn('Error getting current position. Error code ' + _error.code);
+	      };
 	      if ("geolocation" in navigator) {
-	        navigator.geolocation.getCurrentPosition(function (position) {
-	          debugger;
-	          this.props.setCoords(position.coords.latitude, position.coords.longitude);
-	        });
+	        navigator.geolocation.getCurrentPosition(success, error);
 	      } else {
-	        debugger;
+	        console.log('NO geolocator in navigator!');
 	        this.props.setCoords(0, 0);
 	      }
 	    }
@@ -21712,7 +21716,7 @@
 	      var instructions = void 0;
 	      if (this.props.active) {
 	        instructions = _react2.default.createElement(
-	          'h6',
+	          'div',
 	          null,
 	          'Pick the image you think is closest to your area!'
 	        );
