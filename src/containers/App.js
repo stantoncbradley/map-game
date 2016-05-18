@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const dispatchProps = (dispatch) => {
   return {
-    setCoords: () => {
+    setCoords: (lat, long) => {
       dispatch(setCoords(lat, long))
     },
     playAgain: () => {
