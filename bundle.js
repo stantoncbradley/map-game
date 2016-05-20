@@ -21811,7 +21811,7 @@
 	var NUM_PICS = 5;
 	var MAX_LAT = 70;
 	var MAX_LONG = 180;
-	var ZOOM = 13;
+	var ZOOM = 9;
 	var GOOGLE_MAPS_KEY = 'AIzaSyDpPWpOoL02EV4l2GoFlhTxGGn2oBdenlw';
 	
 	var defaultState = {
