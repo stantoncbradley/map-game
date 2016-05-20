@@ -3,7 +3,7 @@
 const NUM_PICS = 5;
 const MAX_LAT = 70;
 const MAX_LONG = 180;
-const ZOOM = 13;
+const ZOOM = 9;
 const GOOGLE_MAPS_KEY = 'AIzaSyDpPWpOoL02EV4l2GoFlhTxGGn2oBdenlw';
 
 const defaultState = {
